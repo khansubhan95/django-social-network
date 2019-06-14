@@ -111,7 +111,7 @@ def register_request(request):
             try:
                 send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
             except Exception as e:
-                print(e.message)
+                print(e)
 
 
             messages.success(request, f"New account created for {username}")
