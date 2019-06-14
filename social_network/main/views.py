@@ -12,6 +12,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .models import Post
 from .tokens import account_activation_token, password_reset_token
 from .forms import PostForm, NewUserForm
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from .api_key import *
 
 # Create your views here.
 
@@ -108,10 +112,24 @@ def register_request(request):
             })
             email_from_address = 'django-admin@django-social-network.com'
 
+            # try:
+            #     send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
+            # except Exception as e:
+            #     print(e)
+
+            message = Mail(
+                from_email=email_from_address,
+                to_emails=email_to_address,
+                subject=email_subject,
+                html_content=email_message)
             try:
-                send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
+                sg = SendGridAPIClient(BASE_SENDGRID_API_KEY)
+                response = sg.send(message)
+                # print(response.status_code)
+                # print(response.body)
+                # print(response.headers)
             except Exception as e:
-                print(e)
+                print(str(e))
 
 
             messages.success(request, f"New account created for {username}")
@@ -180,10 +198,24 @@ def forgot_password(request):
             })
             email_from_address = 'django-admin@django-social-network.com'
 
+            # try:
+            #     send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
+            # except Exception as e:
+            #     print(e.message)
+
+            message = Mail(
+                from_email=email_from_address,
+                to_emails=email_to_address,
+                subject=email_subject,
+                html_content=email_message)
             try:
-                send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
+                sg = SendGridAPIClient(BASE_SENDGRID_API_KEY)
+                response = sg.send(message)
+                # print(response.status_code)
+                # print(response.body)
+                # print(response.headers)
             except Exception as e:
-                print(e.message)
+                print(str(e))
 
             messages.info(request, f"A password reset link has been sent to {email_to_address}")
             return redirect('main:homepage')

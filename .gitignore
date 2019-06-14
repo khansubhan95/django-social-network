@@ -5,3 +5,4 @@ static_cdn/
 secrets.json
 __pycache__/
 base.py
+api_key.py
