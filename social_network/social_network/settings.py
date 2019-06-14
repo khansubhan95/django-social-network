@@ -11,19 +11,31 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
+
+with open(os.path.join(BASE_DIR, 'social_network/secrets.json')) as f: 
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting] 
+    except KeyError:
+        error_msg = 'Set the {0} environment variable'.format(setting) 
+        raise ImproperlyConfigured(error_msg)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG') == '1')
+DEBUG = (get_secret('DEBUG') == 1)
 
 if DEBUG:
     ALLOWED_HOSTS = []
@@ -145,9 +157,19 @@ else:
         os.path.join(BASE_DIR, 'static'),
     )
 
-SENDGRID_API_KEY=os.environ.get('SENDGRID_API_KEY')
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT'))
-EMAIL_USE_TLS = (os.environ.get('EMAIL_USE_TLS')=='1')
+SENDGRID_API_KEY=get_secret('SENDGRID_API_KEY')
+EMAIL_HOST = get_secret('EMAIL_HOST')
+EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = get_secret('EMAIL_PORT')
+EMAIL_USE_TLS = (get_secret('EMAIL_USE_TLS')==1)
+
+
+print(SECRET_KEY, type(SECRET_KEY))
+print(DEBUG, type(DEBUG))
+print(SENDGRID_API_KEY, type(SENDGRID_API_KEY))
+print(EMAIL_HOST, type(EMAIL_HOST))
+print(EMAIL_HOST_USER, type(EMAIL_HOST_USER))
+print(EMAIL_HOST_PASSWORD, type(EMAIL_HOST_PASSWORD))
+print(EMAIL_PORT, type(EMAIL_PORT))
+print(EMAIL_USE_TLS, type(EMAIL_USE_TLS))
