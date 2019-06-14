@@ -40,7 +40,7 @@ DEBUG = (get_secret('DEBUG') == 1)
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['stark-eyrie-92467.herokuapp.com/']
+    ALLOWED_HOSTS = ['khansubhan95.pythonanywhere.com']
 
 
 
