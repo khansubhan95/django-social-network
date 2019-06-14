@@ -40,7 +40,7 @@ DEBUG = (get_secret('DEBUG') == 1)
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['khansubhan95.pythonanywhere.com']
+    ALLOWED_HOSTS = ['stark-eyrie-92467.herokuapp.com/']
 
 
 
@@ -134,15 +134,27 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_cdn"),
-]
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static_cdn"),
+    ]
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
 
-STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
-MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
+    STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+    MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
+
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "../static_cdn"),
+    ]
+
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+
+    STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), '../static_cdn')
+    MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), '../media_cdn')
 
 SENDGRID_API_KEY=get_secret('SENDGRID_API_KEY')
 EMAIL_HOST = get_secret('EMAIL_HOST')
