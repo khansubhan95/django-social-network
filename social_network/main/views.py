@@ -112,11 +112,13 @@ def register_request(request):
             })
             email_from_address = 'django-admin@django-social-network.com'
 
+            # Use below code to send SMTP based mail
             # try:
             #     send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
             # except Exception as e:
             #     print(e)
 
+            # Use below code to send mail using SendGrid API
             message = Mail(
                 from_email=email_from_address,
                 to_emails=email_to_address,
@@ -198,11 +200,13 @@ def forgot_password(request):
             })
             email_from_address = 'django-admin@django-social-network.com'
 
+            # Use below code to send SMTP based mail
             # try:
             #     send_mail(email_subject, email_message, email_from_address, [email_to_address], html_message=email_message)
             # except Exception as e:
             #     print(e.message)
 
+            # Use below code to send mail using SendGrid API
             message = Mail(
                 from_email=email_from_address,
                 to_emails=email_to_address,

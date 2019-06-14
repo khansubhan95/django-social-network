@@ -1,0 +1,8 @@
+BASE_SECRET_KEY = "Your app secret key here"
+BASE_DEBUG = True
+BASE_SENDGRID_API_KEY = "Your SendGrid API key here"
+BASE_EMAIL_HOST = "smtp.sendgrid.net"
+BASE_EMAIL_HOST_USER = "apikey"
+BASE_EMAIL_HOST_PASSWORD = "Your SendGrid API key here"
+BASE_EMAIL_PORT = 587
+BASE_EMAIL_USE_TLS = True
