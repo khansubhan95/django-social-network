@@ -134,28 +134,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static_cdn"),
-    ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_cdn"),
+]
 
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-    STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
-    MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
-else:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/1.9/howto/static-files/
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_URL = '/static/'
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
 
 SENDGRID_API_KEY=get_secret('SENDGRID_API_KEY')
 EMAIL_HOST = get_secret('EMAIL_HOST')
@@ -163,13 +150,3 @@ EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = get_secret('EMAIL_PORT')
 EMAIL_USE_TLS = (get_secret('EMAIL_USE_TLS')==1)
-
-
-print(SECRET_KEY, type(SECRET_KEY))
-print(DEBUG, type(DEBUG))
-print(SENDGRID_API_KEY, type(SENDGRID_API_KEY))
-print(EMAIL_HOST, type(EMAIL_HOST))
-print(EMAIL_HOST_USER, type(EMAIL_HOST_USER))
-print(EMAIL_HOST_PASSWORD, type(EMAIL_HOST_PASSWORD))
-print(EMAIL_PORT, type(EMAIL_PORT))
-print(EMAIL_USE_TLS, type(EMAIL_USE_TLS))
