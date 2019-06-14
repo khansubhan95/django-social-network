@@ -1,0 +1,11 @@
+{% extends "main/main.html" %}
+{% block content %}
+    <h3>{{post.post_title}}</h3>
+    <small>{{post.post_published}}</small><br>
+    {% if post.post_image %}
+        <img class="img-responsive" src="{{post.post_image.url}}" width="400" height="300" /><br>
+    {% endif %}
+    <p>by <a href="{% url 'main:user_detail' post.post_owner.id %}">{{post.post_owner}}</a></p><br>
+    <p>{{post.post_content}}</p>
+    <br><br>
+{% endblock %}

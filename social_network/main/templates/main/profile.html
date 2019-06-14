@@ -1,0 +1,5 @@
+{% extends "main/main.html" %}
+{% block content %}
+    <p>Username: {{user.username}}</p>
+    <p>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></p>
+{% endblock %}

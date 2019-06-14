@@ -1,0 +1,26 @@
+{% extends "main/main.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn" type="submit">Submit</button>
+        </form>
+        <br>
+        {% for post in posts %}
+            <h4><a href="{% url 'main:detail' post.id %}">{{post.post_title}}</a></h4>
+            <p><small>{{post.post_published}}</small></p>
+            {% if post.post_image %}
+                <img class="img-responsive" src="{{post.post_image.url}}" width="400" height="300"/><br>
+            {% endif %}
+            
+            <p><small><strong>by <a href="{% url 'main:user_detail' post.post_owner.id %}">{{post.post_owner}}</a></strong></small></p>
+            <p>{{ post.post_content|truncatechars:200 }}</p>
+            <br><br>
+        {% endfor %}
+    {% else %}
+        <h3>Welcome to the Django Social Network. Connect with your friends and make posts</h3>
+        <p>To make a new account, <a href="/register">register</a></p>
+        <p>If you already have an account, <a href="/login">login</a></p>
+    {% endif %}
+{% endblock %}

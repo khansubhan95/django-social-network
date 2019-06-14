@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Compiled and minified CSS -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="{% static 'main/js/source.js' %}" type="text/javascript"></script>
+</head>
+
+<body>
+    {% include "main/includes/messages.html" %}
+    {% include "main/includes/header.html" %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{% extends "main/main.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn" type="submit">Submit</button>
+</form>
+<p><a href="/forgot-password">Forgot your password?</a></p>
+{% endblock %}

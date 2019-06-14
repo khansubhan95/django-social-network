@@ -1,0 +1,19 @@
+{% extends "main/main.html" %}
+{% block content %}
+    {% if posts %}
+        {% for post in posts %}
+            <h4><a href="{% url 'main:detail' post.id %}">{{post.post_title}}</a></h4>
+            <small>{{post.post_published}}</small><br>
+            {% if post.post_image %}
+                <img class="img-responsive" src="{{post.post_image.url}}" width="400" height="300" />
+            {% endif %}
+            
+            <p>{{post.post_content}}</p>
+            <a style="background-color: #7cb342;" href="{% url 'main:edit' post.id %}" class="btn">Edit</a>
+            <a onclick="return confirm('Are you sure you want to delete {{post.post_title}}?')" style="background-color: #d0181e;" href="{% url 'main:delete' post.id %}" class="btn">Delete</a>
+            <br><br>
+        {% endfor %}
+    {% else %}
+        <h5>You have not made any posts till now. Head over to <a href="/">home</a> to make a new one</h5>
+    {% endif %}
+{% endblock %}
