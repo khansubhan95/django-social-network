@@ -13,28 +13,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import json
 
+from .base import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-with open(os.path.join(BASE_DIR, 'social_network/secrets.json')) as f: 
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting] 
-    except KeyError:
-        error_msg = 'Set the {0} environment variable'.format(setting) 
-        raise ImproperlyConfigured(error_msg)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = BASE_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (get_secret('DEBUG') == 1)
+DEBUG = BASE_DEBUG
 
 if DEBUG:
     ALLOWED_HOSTS = []
@@ -144,9 +135,9 @@ STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
 
 
-SENDGRID_API_KEY=get_secret('SENDGRID_API_KEY')
-EMAIL_HOST = get_secret('EMAIL_HOST')
-EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = get_secret('EMAIL_PORT')
-EMAIL_USE_TLS = (get_secret('EMAIL_USE_TLS')==1)
+SENDGRID_API_KEY= BASE_SENDGRID_API_KEY
+EMAIL_HOST = BASE_EMAIL_HOST
+EMAIL_HOST_USER = BASE_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = BASE_EMAIL_HOST_PASSWORD
+EMAIL_PORT = BASE_EMAIL_PORT
+EMAIL_USE_TLS = BASE_EMAIL_USE_TLS
