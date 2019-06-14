@@ -3,3 +3,4 @@ env/
 media_cdn/
 static_cdn/
 secrets.json
+__pycache__/
