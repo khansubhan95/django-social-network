@@ -18,12 +18,12 @@ Create a user account [here](https://khansubhan95.pythonanywhere.com). Then go t
 ## Development on your local machine
 
 1. Clone the repo
-1. cd into the directory django-social-network
-1. Install virtualenv (pip3 install virtualenv)
-1. Create a virtualenv (virtualenv --python=python3.6 env)
-1. Activate the virtual env (source env/bin/activate)
-1. Install the dependencies (pip install -r requirements.txt)
-1. Go to django-social-network/social_network/social_network and the appropriate settings into base.py.template. Remove the .template 1.xtensions to convert it into a Python file.
-1. Go to django-social-network/social_network/main and the appropriate settings into base.py.template. Remove the .template extensions to convert it into a Python file.
-1. Go to django-social-network/social_network and run python manage.py runserver
-1. Follow Django documentation to makemigrations, migrate, createsuperuser and collectstatic.
+1. `cd` into the directory `django-social-network`
+1. Install virtualenv `pip3 install virtualenv`
+1. Create a virtualenv `virtualenv --python=python3.6 env`
+1. Activate the virtual env `source env/bin/activate`
+1. Install the dependencies `pip install -r requirements.txt`
+1. Go to `django-social-network/social_network/social_network` and the appropriate settings into base.py.template. Remove the .template 1.xtensions to convert it into a Python file.
+1. Go to `django-social-network/social_network/main` and the appropriate settings into base.py.template. Remove the .template extensions to convert it into a Python file.
+1. Go to `django-social-network/social_network` and run `python manage.py runserver`
+1. Follow Django documentation to `makemigrations`, `migrate`, `createsuperuser` and `collectstatic`.
