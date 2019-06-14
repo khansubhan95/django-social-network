@@ -50,7 +50,7 @@ def edit(request, post_id):
         post = Post.objects.get(pk=post_id)
         form = PostForm(instance=post)
         if request.method == 'POST':
-            f = PostForm(request.POST, instance=post)
+            f = PostForm(request.POST, request.FILES, instance=post)
             f.save()
             return redirect('main:myposts')
         return render(request=request, template_name='main/index.html', context={'form': form})
