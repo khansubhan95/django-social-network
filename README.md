@@ -26,4 +26,8 @@ Create a user account [here](https://khansubhan95.pythonanywhere.com). Then go t
 1. Go to `django-social-network/social_network/social_network` and the appropriate settings into base.py.template. Remove the .template 1.xtensions to convert it into a Python file.
 1. Go to `django-social-network/social_network/main` and the appropriate settings into base.py.template. Remove the .template extensions to convert it into a Python file.
 1. Go to `django-social-network/social_network` and run `python manage.py runserver`
-1. Follow Django documentation to `makemigrations`, `migrate`, `createsuperuser` and `collectstatic`.
+1. Follow Django documentation to [makemigrations](https://docs.djangoproject.com/en/2.2/ref/django-admin/#makemigrations), [migrate](https://docs.djangoproject.com/en/2.2/ref/django-admin/#migrate), [createsuperuser](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser) and [collectstatic](https://docs.djangoproject.com/en/2.2/ref/django-admin/#collectstatic).
+
+### A note on send_mail
+
+I deployed this app on pythonanywhere.com, which does not allow sending SMTP based mail using SendGrid's backend. Therefore I used the SendGrid HTTP based API to send mail. I have provided code to do both. To use SMTP, use the EMAIL based secrets in base.py.template and uncomment the appropriate code in main/views.py . To use HTTP based API, enter the secret in api_key.py.template, the code by default exists in main/views.py . 
