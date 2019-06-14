@@ -153,7 +153,7 @@ else:
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
 
-    STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+    STATIC_ROOT='/home/khansubhan95/django-social-network/static_cdn'
     MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
 
 SENDGRID_API_KEY=get_secret('SENDGRID_API_KEY')
