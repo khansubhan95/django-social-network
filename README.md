@@ -34,6 +34,6 @@ I deployed this app on pythonanywhere.com, which does not allow sending SMTP bas
 
 ### TODO
 
-1. Migrate database from SQLite to PostgreSQL
-1. Add a likes system to the posts
-1. Add a comment system
+-[ ] Migrate database from SQLite to PostgreSQL
+-[ ] Add a likes system to the posts
+-[ ] Add a comment system
