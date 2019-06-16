@@ -31,3 +31,9 @@ Create a user account [here](https://khansubhan95.pythonanywhere.com). Then go t
 ### A note on send_mail
 
 I deployed this app on pythonanywhere.com, which does not allow sending SMTP based mail using SendGrid's backend. Therefore I used the SendGrid HTTP based API to send mail. I have provided code to do both. To use SMTP, use the EMAIL based secrets in base.py.template and uncomment the appropriate code in main/views.py . To use HTTP based API, enter the secret in api_key.py.template, the code by default exists in main/views.py . 
+
+### TODO
+
+1. Migrate database from SQLite to PostgreSQL
+1. Add a likes system to the posts
+1. Add a comment system
